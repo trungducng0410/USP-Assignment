@@ -49,17 +49,17 @@ def main():
     if len(sys.argv) < 3:
         print('Require a file name')
         exit(1)
-    else:
-        file_name = sys.argv[len(sys.argv) - 1]
-        try:
-            f = open(file_name, "r")
-        except:
-            print('Cannot find the file with given name')
-            exit(1)
-        readable = f.readable()
-        if readable == False:
-            print('Cannot read the file')
-            exit(1)
+
+    file_name = sys.argv[len(sys.argv) - 1]
+    try:
+        f = open(file_name, "r")
+    except:
+        print('Cannot find the file with given name')
+        exit(1)
+    readable = f.readable()
+    if readable == False:
+        print('Cannot read the file')
+        exit(1)
     
     data = read_each_line_to_list(f)
     
@@ -71,19 +71,23 @@ def main():
             if param in option_list:
                 print('No options can be used simultaneously')
                 exit(1)
-        option = sys.argv[1]
 
-        if (option == '-a'):
-            print_unique_name(data)
-        elif (option == '-f'):
-            print_number_of_file(data)
-        elif (option == '-s'):
-            print_number_of_bytes(data)
-        elif (option == '-u'):
-            username = sys.argv[2]
-            print_user_summary(data, username)
-        elif (option == '-v'):
-            print_personal_information()
+    option = sys.argv[1]
+
+    if (option == '-a'):
+        print_unique_name(data)
+    elif (option == '-f'):
+        print_number_of_file(data)
+    elif (option == '-s'):
+        print_number_of_bytes(data)
+    elif (option == '-u'):
+        username = sys.argv[2]
+        print_user_summary(data, username)
+    elif (option == '-v'):
+        print_personal_information()
+    else:
+        print('You must choose option in this list: -a, -f, -s, -u, -v')
+        exit(1)
         
 
 if __name__ == '__main__':
