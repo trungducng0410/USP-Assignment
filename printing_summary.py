@@ -16,9 +16,14 @@ def print_unique_name(data):
     for name in username_arr:
         if name not in unique_arr:
             unique_arr.append(name)
-    print('Printing users:')
-    print(*unique_arr, sep = "\n")
+    if len(unique_arr) > 0:
+        print('Printing users:')
+        print(*unique_arr, sep = "\n")
+    else:
+        print('No printing users')
 
+def print_number_of_file(data):
+    print('Total number of files printed:', len(data))
 
 def main():
     if len(sys.argv) < 3:
@@ -40,6 +45,8 @@ def main():
     
     if (sys.argv[1] == '-a'):
         print_unique_name(data)
+    elif (sys.argv[1] == '-f'):
+        print_number_of_file(data)
         
 
 
