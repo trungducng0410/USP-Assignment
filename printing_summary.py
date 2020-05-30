@@ -28,6 +28,17 @@ def print_number_of_bytes(data):
     byte_arr = [int(ele[1]) for ele in data]
     print('Total number of bytes printed:', sum(byte_arr))
 
+def print_user_summary(data, username):
+    arr = [ele for ele in data if ele[2] == username]
+    byte_arr = [int(ele[1]) for ele in arr]
+    if len(arr) > 0:
+        print(f'User {username}:')
+        print('Total number of files printed:', len(arr))
+        print('Total number of bytes printed:', sum(byte_arr))
+        print('Largest file printed:', max(byte_arr))
+    else:
+        print(f'User {username} not found')
+
 def main():
     if len(sys.argv) < 3:
         print('Require a file name')
@@ -54,6 +65,9 @@ def main():
         print_number_of_file(data)
     elif (option == '-s'):
         print_number_of_bytes(data)
+    elif (option == '-u'):
+        username = sys.argv[2]
+        print_user_summary(data, username)
 
 if __name__ == '__main__':
     main()
