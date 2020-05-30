@@ -65,19 +65,26 @@ def main():
     
     option_list = ['-a', '-f', '-s', '-u', '-v']
 
-    option = sys.argv[1]
+    if len(sys.argv) > 3:
+        count = 0
+        for param in sys.argv[2:]:
+            if param in option_list:
+                print('No options can be used simultaneously')
+                exit(1)
+        option = sys.argv[1]
 
-    if (option == '-a'):
-        print_unique_name(data)
-    elif (option == '-f'):
-        print_number_of_file(data)
-    elif (option == '-s'):
-        print_number_of_bytes(data)
-    elif (option == '-u'):
-        username = sys.argv[2]
-        print_user_summary(data, username)
-    elif (option == '-v'):
-        print_personal_information()
+        if (option == '-a'):
+            print_unique_name(data)
+        elif (option == '-f'):
+            print_number_of_file(data)
+        elif (option == '-s'):
+            print_number_of_bytes(data)
+        elif (option == '-u'):
+            username = sys.argv[2]
+            print_user_summary(data, username)
+        elif (option == '-v'):
+            print_personal_information()
+        
 
 if __name__ == '__main__':
     main()
