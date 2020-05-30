@@ -1,7 +1,6 @@
 import sys
 import re
 
-
 def read_each_line_to_list(file):
     result = []
     for line in file:
@@ -11,7 +10,7 @@ def read_each_line_to_list(file):
     return result
 
 def print_unique_name(data):
-    username_arr = [name[2] for name in data]
+    username_arr = [ele[2] for ele in data]
     unique_arr = []
     for name in username_arr:
         if name not in unique_arr:
@@ -24,6 +23,10 @@ def print_unique_name(data):
 
 def print_number_of_file(data):
     print('Total number of files printed:', len(data))
+
+def print_number_of_bytes(data):
+    byte_arr = [int(ele[1]) for ele in data]
+    print('Total number of bytes printed:', sum(byte_arr))
 
 def main():
     if len(sys.argv) < 3:
@@ -43,13 +46,14 @@ def main():
     
     data = read_each_line_to_list(f)
     
-    if (sys.argv[1] == '-a'):
+    option = sys.argv[1]
+
+    if (option == '-a'):
         print_unique_name(data)
-    elif (sys.argv[1] == '-f'):
+    elif (option == '-f'):
         print_number_of_file(data)
-        
-
-
+    elif (option == '-s'):
+        print_number_of_bytes(data)
 
 if __name__ == '__main__':
     main()
