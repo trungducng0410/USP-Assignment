@@ -39,6 +39,12 @@ def print_user_summary(data, username):
     else:
         print(f'User {username} not found')
 
+def print_personal_information():
+    print('Firstname: Trung Duc')
+    print('Surname: Nguyen')
+    print('StudentID: 13826211')
+    print('Data of completion: 30/05/2020')
+
 def main():
     if len(sys.argv) < 3:
         print('Require a file name')
@@ -57,6 +63,8 @@ def main():
     
     data = read_each_line_to_list(f)
     
+    option_list = ['-a', '-f', '-s', '-u', '-v']
+
     option = sys.argv[1]
 
     if (option == '-a'):
@@ -68,6 +76,8 @@ def main():
     elif (option == '-u'):
         username = sys.argv[2]
         print_user_summary(data, username)
+    elif (option == '-v'):
+        print_personal_information()
 
 if __name__ == '__main__':
     main()
