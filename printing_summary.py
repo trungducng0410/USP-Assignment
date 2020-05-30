@@ -10,6 +10,14 @@ def read_each_line_to_list(file):
     file.close()
     return result
 
+def print_unique_name(data):
+    username_arr = [name[2] for name in data]
+    unique_arr = []
+    for name in username_arr:
+        if name not in unique_arr:
+            unique_arr.append(name)
+    print('Printing users:')
+    print(*unique_arr, sep = "\n")
 
 
 def main():
@@ -29,7 +37,11 @@ def main():
             exit(1)
     
     data = read_each_line_to_list(f)
-    print(data)
+    
+    if (sys.argv[1] == '-a'):
+        print_unique_name(data)
+        
+
 
 
 if __name__ == '__main__':
